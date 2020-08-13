@@ -1,13 +1,18 @@
 Paid Blocks
 ===========
 
-This shared extension takes over providing additional behavior to a block it's considered paid.
+This shared extension takes over providing additional behavior to a block if it considered to be a paid feature.
 
-This condition can depend on a few factors: is it a simple or atomic site? have the have site a paid or free plan? However, from the perspective of paid-blocks implementation, it relies on the business-layer system.
+This condition can depend on a few factors: 
 
-In the end, the feature will define the availability of the blocks, getting data from the Jetpack global state on the client-side `Jetpack_Editor_Initial_State`.
+* is the site a Simple or Atomic site? 
+* does the site have site a paid or free plan? 
 
-In short and as a generic rule, if you need to set a block as the paid, you should do it in the proper place not here.
+From the perspective of paid-blocks implementation however, our logic relies on the business-layer system.
+
+Ultimately, the feature defines the availability of the blocks by checking data from the Jetpack global state provide on the client-side within the global `Jetpack_Editor_Initial_State` object.
+
+In short and as a general rule, if you need to set a block as paid, you should do it in the proper place not here.
 
 ### Setting blocks as paid in Jetpack
 
@@ -17,4 +22,4 @@ You can take a look at the Extension doc, [Paid Blocks](extensions/README.md#pai
 
 Sometimes some blocks need to be defined as paid because some of their features depend on the site plan, for instance, `core/video`. It's a core block.
 
-For these cases, set the extension in WordPress.com in the same way that a block registered by Jetpack, also add the dependency to the paid blocks list. Use D46955-code as a reference for how to do it. 
+For such cases, you will need to mark the extension as "paid" within the WordPress.com codebase (not within Jetpack). You will also need to add the dependency to the paid blocks list. Please refer to D46955-code as a reference for how to achieve this.
